@@ -47,7 +47,7 @@ class SocialController extends Controller
                 'email' => $googleUser->getEmail(),
                 'password' => bcrypt(str_random(16)),
                 'google_id' => $googleUser->getId(),
-                'avatar' => $googleUser->getAvatar(),
+                'profile_photo_path' => $googleUser->getAvatar(),
             ]);
 
             Auth::login($user);
