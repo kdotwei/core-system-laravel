@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\Auth\SocialController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -22,3 +23,6 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
+Route::get('auth/google', [SocialController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('auth/google/callback', [SocialController::class, 'handleGoogleCallback']);

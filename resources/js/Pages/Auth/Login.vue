@@ -85,6 +85,9 @@ const submit = () => {
                     Log in
                 </PrimaryButton>
             </div>
+            <a href="{{ route('auth.google') }}" class="btn btn-danger">
+                Login with Google
+            </a>
         </form>
     </AuthenticationCard>
 </template>
