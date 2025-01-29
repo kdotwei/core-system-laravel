@@ -63,6 +63,6 @@ class SocialController extends Controller
             ]);
         }
         
-        return redirect()->intended('/dashboard');
+        return redirect()->intended('dashboard');
     }
 }
