@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
 
 
 class SocialController extends Controller
@@ -53,7 +54,13 @@ class SocialController extends Controller
                 'profile_photo_path' => $googleUser->getAvatar(),
             ]);
 
-            Auth::login($user);
+            // Generate the token for reset password
+            $token = Password::createToken($user);
+
+            return redirect()->route('password.reset', [
+                'token' => $token,
+                'email' => $user->email,
+            ]);
         }
         
         return redirect()->intended('/dashboard');
