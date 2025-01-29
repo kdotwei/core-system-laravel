@@ -28,7 +28,6 @@ const submit = () => {
     });
 };
 
-// 新增的方法，用於處理 Google 登錄按鈕點擊事件
 const signInWithGoogle = () => {
     window.location.href = route('auth.google');
 };
