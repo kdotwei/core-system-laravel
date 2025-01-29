@@ -12,9 +12,10 @@ class SchoolController extends Controller
     {
         // Read schools CSV
         $schoolsCsv = storage_path('app/public/schools.csv');
-        $schools = array_map('str_getcsv', file($schoolsCsv));
+        $schoolsRaw = array_map('str_getcsv', file($schoolsCsv));
+        $schoolsData = array_slice($schoolsRaw, 1); // Skip header
         $schoolData = [];
-        foreach ($schools as $row) {
+        foreach ($schoolsData as $row) {
             $schoolData[] = [
                 'id' => $row[0],   // school id
                 'name' => $row[1], // school name
@@ -23,9 +24,10 @@ class SchoolController extends Controller
 
         // Read department CSV
         $departmentsCsv = storage_path('app/public/110_sdata.csv');
-        $departments = array_map('str_getcsv', file($departmentsCsv));
+        $departmentsRaw = array_map('str_getcsv', file($departmentsCsv));
+        $departmentsData = array_slice($departmentsRaw, 1); // Skip header
         $departmentData = [];
-        foreach ($departments as $row) {
+        foreach ($departmentsData as $row) {
             $departmentData[] = [
                 'school_id' => $row[0], // School ID
                 'name' => $row[3], // Department name
