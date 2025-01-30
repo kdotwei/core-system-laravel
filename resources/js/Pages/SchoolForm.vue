@@ -53,8 +53,9 @@ const submitForm = () => {
                     label="name"
                     :options="schools"
                     placeholder="Search or select a school"
+                    append-to-body
                     class="text-white rounded-md
-                        dark:bg-gray-200 dark:active:bg-gray-300 dark:focus:bg-white 
+                        dark:bg-gray-300 dark:active:bg-gray-300 dark:focus:bg-white 
                         dark:text-gray-800 dark:focus:ring-offset-gray-800 dark:hover:bg-white 
                         focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:bg-gray-700
                         hover:bg-gray-700 active:bg-gray-900"
@@ -70,8 +71,9 @@ const submitForm = () => {
                     :options="filteredDepartments"
                     placeholder="Search or select a department"
                     :disabled="!selectedSchool"
+                    append-to-body
                     class="text-white rounded-md
-                        dark:bg-gray-200 dark:active:bg-gray-300 dark:focus:bg-white 
+                        dark:bg-gray-300 dark:active:bg-gray-300 dark:focus:bg-white 
                         dark:text-gray-800 dark:focus:ring-offset-gray-800 dark:hover:bg-white 
                         focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:bg-gray-700
                         hover:bg-gray-700 active:bg-gray-900"
@@ -87,3 +89,9 @@ const submitForm = () => {
         </form>
     </AuthenticationCard>
 </template>
+
+<style>
+.vs__search::placeholder {
+    @apply text-gray-400;
+}
+</style>
