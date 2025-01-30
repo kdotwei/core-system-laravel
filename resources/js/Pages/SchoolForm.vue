@@ -1,14 +1,11 @@
 <script setup>
 import { ref, computed } from "vue";
 import { Head, usePage } from "@inertiajs/vue3";
-import AppLayout from "@/Layouts/AppLayout.vue"; // Jetstream default layout
 import AuthenticationCard from '@/Components/AuthenticationCard.vue';
 import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
-import Checkbox from '@/Components/Checkbox.vue';
-import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import SelectInput from "@/Components/SelectInput.vue";
 import vSelect from "vue-select";
 import "vue-select/dist/vue-select.css";
 
@@ -48,35 +45,23 @@ const submitForm = () => {
             <!-- School Selection -->
             <div>
                 <InputLabel for="school" value="Select School" />
-                <v-select 
+                <SelectInput
                     v-model="selectedSchool"
                     label="name"
-                    :options="schools"
                     placeholder="Search or select a school"
-                    append-to-body
-                    class="text-white rounded-md
-                        dark:bg-gray-300 dark:active:bg-gray-300 dark:focus:bg-white 
-                        dark:text-gray-800 dark:focus:ring-offset-gray-800 dark:hover:bg-white 
-                        focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:bg-gray-700
-                        hover:bg-gray-700 active:bg-gray-900"
+                    :options="schools"
                 />
             </div>
 
             <!-- Department Selection -->
             <div>
                 <InputLabel for="departmen" value="Select Department" />
-                <v-select
+                <SelectInput
                     v-model="selectedDepartment"
                     label="fullName"
-                    :options="filteredDepartments"
                     placeholder="Search or select a department"
+                    :options="filteredDepartments"
                     :disabled="!selectedSchool"
-                    append-to-body
-                    class="text-white rounded-md
-                        dark:bg-gray-300 dark:active:bg-gray-300 dark:focus:bg-white 
-                        dark:text-gray-800 dark:focus:ring-offset-gray-800 dark:hover:bg-white 
-                        focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:bg-gray-700
-                        hover:bg-gray-700 active:bg-gray-900"
                 />
             </div>
 
@@ -89,9 +74,3 @@ const submitForm = () => {
         </form>
     </AuthenticationCard>
 </template>
-
-<style>
-.vs__search::placeholder {
-    @apply text-gray-400;
-}
-</style>
