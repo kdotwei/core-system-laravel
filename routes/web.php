@@ -26,7 +26,7 @@ Route::middleware([
 });
 
 Route::get('auth/google', [SocialController::class, 'redirectToGoogle'])->name('auth.google');
-Route::get('auth/google/callback', [SocialController::class, 'handleGoogleCallback']);
+Route::get('auth/google/callback', [SocialController::class, 'handleGoogleCallback'])->name('auth.google.callback');
 
 Route::get('/form', [SchoolController::class, 'getFormData']);
 

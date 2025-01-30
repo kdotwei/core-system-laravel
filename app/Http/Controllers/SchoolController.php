@@ -35,7 +35,7 @@ class SchoolController extends Controller
             ];
         }
 
-        return Inertia::render('SchoolForm', [
+        return Inertia::render('Forms/SchoolForm', [
             'schools' => $schoolData,
             'departments' => $departmentData
         ]);
