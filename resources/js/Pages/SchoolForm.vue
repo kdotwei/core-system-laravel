@@ -1,7 +1,14 @@
 <script setup>
 import { ref, computed } from "vue";
-import { usePage } from "@inertiajs/vue3";
+import { Head, usePage } from "@inertiajs/vue3";
 import AppLayout from "@/Layouts/AppLayout.vue"; // Jetstream default layout
+import AuthenticationCard from '@/Components/AuthenticationCard.vue';
+import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
+import Checkbox from '@/Components/Checkbox.vue';
+import InputError from '@/Components/InputError.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import TextInput from '@/Components/TextInput.vue';
 import vSelect from "vue-select";
 import "vue-select/dist/vue-select.css";
 
@@ -31,48 +38,52 @@ const submitForm = () => {
 </script>
 
 <template>
-  <AppLayout title="School & Department Selection">
-    <div class="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg">
-        <h2 class="text-2xl font-semibold text-gray-700 mb-4">
-            School & Department Selection
-        </h2>
+    <Head title="School & Department Selection" />
+    <AuthenticationCard>
+        <template #logo>
+            <AuthenticationCardLogo />
+        </template>
         
         <form @submit.prevent="submitForm" class="space-y-6">
             <!-- School Selection -->
             <div>
-                <label class="block text-sm font-medium text-gray-700">Select School</label>
+                <InputLabel for="school" value="Select School" />
                 <v-select 
                     v-model="selectedSchool"
                     label="name"
                     :options="schools"
                     placeholder="Search or select a school"
-                    class="mt-1 block w-full"
+                    class="text-white rounded-md
+                        dark:bg-gray-200 dark:active:bg-gray-300 dark:focus:bg-white 
+                        dark:text-gray-800 dark:focus:ring-offset-gray-800 dark:hover:bg-white 
+                        focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:bg-gray-700
+                        hover:bg-gray-700 active:bg-gray-900"
                 />
             </div>
 
             <!-- Department Selection -->
             <div>
-                <label class="block text-sm font-medium text-gray-700">Select Department</label>
+                <InputLabel for="departmen" value="Select Department" />
                 <v-select
-                v-model="selectedDepartment"
-                label="fullName"
-                :options="filteredDepartments"
-                placeholder="Search or select a department"
-                :disabled="!selectedSchool"
-                class="mt-1 block w-full"
+                    v-model="selectedDepartment"
+                    label="fullName"
+                    :options="filteredDepartments"
+                    placeholder="Search or select a department"
+                    :disabled="!selectedSchool"
+                    class="text-white rounded-md
+                        dark:bg-gray-200 dark:active:bg-gray-300 dark:focus:bg-white 
+                        dark:text-gray-800 dark:focus:ring-offset-gray-800 dark:hover:bg-white 
+                        focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:bg-gray-700
+                        hover:bg-gray-700 active:bg-gray-900"
                 />
             </div>
 
             <!-- Submit Button -->
-            <div class="flex justify-end">
-                <button 
-                type="submit" 
-                class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg shadow"
-                >
-                Submit
-                </button>
+            <div class="flex items-center justify-end mt-4">
+                <PrimaryButton class="ms-4">
+                    Submit
+                </PrimaryButton>
             </div>
         </form>
-    </div>
-  </AppLayout>
+    </AuthenticationCard>
 </template>
